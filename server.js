@@ -9,7 +9,10 @@ const path = require('path');
 const app = express();
 
 // Allow cross-origin requests (needed to connect frontend and backend)
-app.use(cors());
+// Update CORS to allow requests only from your Netlify frontend
+app.use(cors({
+    origin: 'https://luxury-stroopwafel-856213.netlify.app' // Replace with your actual Netlify frontend URL
+}));
 
 // Allow our server to understand JSON data
 app.use(express.json());
@@ -18,11 +21,7 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Connect to MongoDB (our database)
-<<<<<<< HEAD
-mongoose.connect('mongodb://localhost:27017/awge-clone', {
-=======
 mongoose.connect('mongodb+srv://gopijagarlamudi99:<Gopichand99$>@cluster0.ok0qn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
->>>>>>> deployment-branch
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -87,11 +86,7 @@ app.get('/products', async (req, res) => {
     }
 });
 
-// Start the server on port 5000
-app.listen(5000, () => {
-    console.log('Backend running on port 5000');
-});
-
+// Route to delete a product by ID
 app.delete('/products/:id', async (req, res) => {
     try {
         const { id } = req.params;
@@ -100,4 +95,9 @@ app.delete('/products/:id', async (req, res) => {
     } catch (error) {
         res.status(500).send(error);
     }
+});
+
+// Start the server on port 5000
+app.listen(5000, () => {
+    console.log('Backend running on port 5000');
 });
