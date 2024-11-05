@@ -18,7 +18,11 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Connect to MongoDB (our database)
+<<<<<<< HEAD
 mongoose.connect('mongodb://localhost:27017/awge-clone', {
+=======
+mongoose.connect('mongodb+srv://gopijagarlamudi99:<Gopichand99$>@cluster0.ok0qn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+>>>>>>> deployment-branch
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
