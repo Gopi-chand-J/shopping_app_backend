@@ -11,7 +11,8 @@ const app = express();
 // Allow cross-origin requests (needed to connect frontend and backend)
 // Update CORS to allow requests only from your Netlify frontend
 app.use(cors({
-    origin:  ['http://localhost:3000', 'rad-marshmallow-f281f7.netlify.app'] // Replace with your actual Netlify frontend URL
+    origin:  ['http://localhost:3000', 'rad-marshmallow-f281f7.netlify.app'],
+    credentials: true // Replace with your actual Netlify frontend URL
 }));
 
 // Allow our server to understand JSON data
